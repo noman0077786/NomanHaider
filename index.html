@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noman Haider | Professional Content Writer</title>
+    <title>Noman Haider | Premium Content Writer Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind Configuration -->
+    <!-- Tailwind Configuration with Premium Animations -->
     <script>
         tailwind.config = {
             theme: {
@@ -22,22 +22,51 @@
                         brand: {
                             50: '#f0fdfa',
                             100: '#ccfbf1',
+                            400: '#2dd4bf',
                             500: '#14b8a6',
                             600: '#0d9488',
                             900: '#134e4a',
                         }
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'scroll': 'scroll 30s linear infinite',
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
                         'slide-up': 'slideUp 0.6s ease-out forwards',
                     },
                     keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
                         fadeIn: {
                             '0%': { opacity: '0' },
                             '100%': { opacity: '1' },
                         },
                         slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
@@ -46,37 +75,90 @@
         }
     </script>
     <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        /* Custom sleek scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0d9488; }
+
+        /* Reveal Animation Classes for Scroll Elements */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reading Progress Bar */
+        #progress-bar {
+            transform-origin: 0% 50%;
+            transform: scaleX(0);
+            transition: transform 0.2s ease-out;
+        }
+
+        /* Premium Article Typography */
+        .article-content p:first-of-type::first-letter {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            float: left;
+            line-height: 1;
+            margin-right: 0.5rem;
+            color: #0d9488;
+            font-weight: 900;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .marquee-container {
+            display: flex;
+            width: 200%;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- Background Animated Blobs for Premium Feel -->
+    <div class="fixed inset-0 w-full h-full z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-brand-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    </div>
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+    <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.05)] transition-all duration-300">
+        <!-- Reading Progress Bar -->
+        <div id="progress-container" class="absolute bottom-0 left-0 w-full h-1 bg-transparent hidden">
+            <div id="progress-bar" class="h-full bg-gradient-to-r from-brand-400 to-brand-600"></div>
+        </div>
+
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Left: Name -->
                 <div class="flex-shrink-0 cursor-pointer group" onclick="navigate('home')">
-                    <h1 class="font-serif text-2xl md:text-3xl font-black text-slate-900 tracking-tight group-hover:text-brand-600 transition-colors">
-                        Noman Haider<span class="text-brand-500">.</span>
+                    <h1 class="font-serif text-2xl md:text-3xl font-black tracking-tight text-slate-900 transition-all duration-300 group-hover:scale-105 origin-left">
+                        Noman Haider<span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-purple-500 animate-gradient-x">.</span>
                     </h1>
                 </div>
                 
                 <!-- Right: Navigation Links (Desktop) -->
-                <nav class="hidden md:flex space-x-8">
-                    <button onclick="navigate('home')" class="nav-link text-slate-600 hover:text-brand-600 font-medium transition-colors border-b-2 border-transparent hover:border-brand-500 pb-1">Home</button>
-                    <button onclick="navigate('about')" class="nav-link text-slate-600 hover:text-brand-600 font-medium transition-colors border-b-2 border-transparent hover:border-brand-500 pb-1">About</button>
-                    <button onclick="navigate('articles')" class="nav-link text-slate-600 hover:text-brand-600 font-medium transition-colors border-b-2 border-transparent hover:border-brand-500 pb-1">Articles</button>
-                    <button onclick="navigate('contact')" class="nav-link text-slate-600 hover:text-brand-600 font-medium transition-colors border-b-2 border-transparent hover:border-brand-500 pb-1">Contact</button>
+                <nav class="hidden md:flex space-x-1 border border-slate-200/50 bg-white/50 rounded-full px-2 py-1 shadow-sm">
+                    <button onclick="navigate('home')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-white transition-all duration-300">Home</button>
+                    <button onclick="navigate('about')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-white transition-all duration-300">About</button>
+                    <button onclick="navigate('articles')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-white transition-all duration-300">Articles</button>
+                    <button onclick="navigate('contact')" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-white bg-slate-900 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/30 transition-all duration-300">Hire Me</button>
                 </nav>
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none p-2">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-600 focus:outline-none p-2 transition-colors">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
@@ -86,73 +168,147 @@
         </div>
         
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
-            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
-                <button onclick="navigate('home'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50">Home</button>
-                <button onclick="navigate('about'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50">About</button>
-                <button onclick="navigate('articles'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50">Articles</button>
-                <button onclick="navigate('contact'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50">Contact</button>
+        <div id="mobile-menu" class="md:hidden hidden glass-card absolute w-full shadow-2xl origin-top transition-all duration-300">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col items-center">
+                <button onclick="navigate('home'); toggleMobileMenu()" class="block w-full text-center px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-white/80 transition-all">Home</button>
+                <button onclick="navigate('about'); toggleMobileMenu()" class="block w-full text-center px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-white/80 transition-all">About</button>
+                <button onclick="navigate('articles'); toggleMobileMenu()" class="block w-full text-center px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-white/80 transition-all">Portfolio</button>
+                <button onclick="navigate('contact'); toggleMobileMenu()" class="block w-full text-center px-3 py-3 rounded-lg text-base font-medium text-white bg-slate-900 hover:bg-brand-600 transition-all">Contact Me</button>
             </div>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <main class="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         
         <!-- ================= HOME SECTION ================= -->
-        <section id="section-home" class="animate-fade-in block">
-            <div class="flex flex-col items-center text-center mt-8 mb-16 animate-slide-up">
-                <!-- Circular Profile Pic -->
-                <div class="relative w-40 h-40 mb-6">
-                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&q=80&w=400&h=400" alt="Noman Haider" class="rounded-full w-full h-full object-cover shadow-xl border-4 border-white ring-2 ring-slate-100">
-                    <div class="absolute bottom-1 right-1 bg-brand-500 w-8 h-8 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+        <section id="section-home" class="block animate-fade-in">
+            <!-- Hero Section -->
+            <div class="flex flex-col items-center text-center mt-10 mb-16">
+                <!-- Premium Animated Profile Pic -->
+                <div class="relative w-48 h-48 mb-8 animate-float group cursor-pointer">
+                    <div class="absolute inset-0 bg-gradient-to-r from-brand-400 to-purple-500 rounded-full blur-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&q=80&w=400&h=400" alt="Noman Haider" class="relative rounded-full w-full h-full object-cover shadow-2xl border-4 border-white transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute bottom-2 right-2 bg-slate-900 w-10 h-10 rounded-full border-4 border-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:rotate-12 group-hover:bg-brand-500">
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                     </div>
                 </div>
                 
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">Hi, I'm Noman Haider</h2>
-                <div class="text-lg md:text-xl text-slate-600 max-w-3xl leading-relaxed">
-                    <p class="mb-2 font-medium text-brand-600">CONTENT WRITING PORTFOLIO | 12 Professional Articles - 2026 Edition</p>
-                    <p>Showcasing data-driven, conversion-focused writing across four content categories: E-Commerce, SEO, Blog, and Social Media.</p>
-                </div>
-            </div>
-
-            <!-- 3 Quick Links Boxes -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 animate-slide-up" style="animation-delay: 0.1s;">
-                <div onclick="navigate('about')" class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group text-center">
-                    <div class="w-14 h-14 mx-auto bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2 font-serif">About Me</h3>
-                    <p class="text-slate-500">Discover my background, writing philosophy, and what drives my words.</p>
+                <h2 class="text-5xl md:text-7xl font-serif font-black text-slate-900 mb-6 tracking-tight">
+                    Crafting Words That <br class="hidden md:block"/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-purple-600 animate-gradient-x">Drive Conversions.</span>
+                </h2>
+                <div class="text-lg md:text-xl text-slate-600 max-w-3xl leading-relaxed font-light">
+                    <p class="mb-4 font-semibold text-brand-600 tracking-widest uppercase text-sm">Professional Content Writer | 2026 Portfolio</p>
+                    <p>I specialize in data-driven writing across E-Commerce, SEO, Blogs, and Social Media. Let's transform your audience into loyal customers through the power of high-impact copy.</p>
                 </div>
                 
-                <div onclick="navigate('articles')" class="bg-brand-600 rounded-2xl p-8 shadow-lg shadow-brand-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group text-center text-white transform md:-translate-y-4">
-                    <div class="w-14 h-14 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 font-serif">My Articles</h3>
-                    <p class="text-brand-100">Browse my complete portfolio of 12 premium, conversion-focused articles.</p>
-                </div>
-
-                <div onclick="navigate('contact')" class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group text-center">
-                    <div class="w-14 h-14 mx-auto bg-purple-50 text-purple-500 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2 font-serif">Contact</h3>
-                    <p class="text-slate-500">Ready to work together? Get in touch to discuss your next big project.</p>
+                <div class="mt-10 flex gap-4 flex-col sm:flex-row">
+                    <button onclick="navigate('articles')" class="px-8 py-4 bg-slate-900 text-white rounded-full font-bold shadow-xl shadow-slate-900/20 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">Explore Portfolio</button>
+                    <button onclick="navigate('contact')" class="px-8 py-4 bg-white text-slate-900 rounded-full font-bold shadow-lg border border-slate-100 hover:-translate-y-1 hover:shadow-xl hover:border-brand-200 transition-all duration-300 flex items-center justify-center">
+                        Hire Me <svg class="w-5 h-5 ml-2 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </button>
                 </div>
             </div>
 
-            <!-- 6 Featured Articles -->
-            <div class="mb-10 animate-slide-up" style="animation-delay: 0.2s;">
-                <div class="flex justify-between items-end mb-8">
-                    <div>
-                        <h2 class="text-3xl font-serif font-bold text-slate-900">Featured Work</h2>
-                        <p class="text-slate-500 mt-2">A curated selection from my 2026 portfolio edition.</p>
+            <!-- Stats Counter Bar -->
+            <div class="w-full max-w-4xl mx-auto mb-20 reveal">
+                <div class="glass-card rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-around items-center gap-8 shadow-sm border border-white/60">
+                    <div class="text-center">
+                        <h4 class="text-4xl font-black text-slate-900 mb-1">100<span class="text-brand-500">%</span></h4>
+                        <p class="text-sm font-semibold text-slate-500 uppercase tracking-widest">Client Satisfaction</p>
                     </div>
-                    <button onclick="navigate('articles')" class="hidden sm:flex items-center text-brand-600 hover:text-brand-700 font-semibold transition-colors">
-                        View All <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <div class="hidden md:block w-px h-12 bg-slate-200"></div>
+                    <div class="text-center">
+                        <h4 class="text-4xl font-black text-slate-900 mb-1">SEO</h4>
+                        <p class="text-sm font-semibold text-slate-500 uppercase tracking-widest">Optimized Content</p>
+                    </div>
+                    <div class="hidden md:block w-px h-12 bg-slate-200"></div>
+                    <div class="text-center">
+                        <h4 class="text-4xl font-black text-slate-900 mb-1">20<span class="text-brand-500">+</span></h4>
+                        <p class="text-sm font-semibold text-slate-500 uppercase tracking-widest">Niches Mastered</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scrolling Marquee (Niches & Industries) -->
+            <div class="w-[100vw] relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] bg-slate-900 py-4 mb-24 overflow-hidden shadow-lg transform -skew-y-1 reveal">
+                <div class="marquee-container animate-scroll text-brand-100 font-bold text-lg md:text-2xl uppercase tracking-widest whitespace-nowrap">
+                    <span class="px-8">✦ SaaS Copywriting</span>
+                    <span class="px-8">✦ E-Commerce Product Descriptions</span>
+                    <span class="px-8">✦ B2B Thought Leadership</span>
+                    <span class="px-8">✦ SEO Long-Form Blogs</span>
+                    <span class="px-8">✦ Health & Wellness</span>
+                    <span class="px-8">✦ Technology & AI</span>
+                    <span class="px-8">✦ Lifestyle Articles</span>
+                    <!-- Duplicate for infinite loop illusion -->
+                    <span class="px-8">✦ SaaS Copywriting</span>
+                    <span class="px-8">✦ E-Commerce Product Descriptions</span>
+                    <span class="px-8">✦ B2B Thought Leadership</span>
+                    <span class="px-8">✦ SEO Long-Form Blogs</span>
+                    <span class="px-8">✦ Health & Wellness</span>
+                    <span class="px-8">✦ Technology & AI</span>
+                    <span class="px-8">✦ Lifestyle Articles</span>
+                </div>
+            </div>
+
+            <!-- Main Features / Philosophy Boxes -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
+                
+                <!-- My Content Philosophy Box -->
+                <div class="lg:col-span-2 reveal glass-card rounded-3xl p-8 md:p-10 bg-gradient-to-br from-white to-brand-50/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 text-brand-100 opacity-50 transform rotate-12 group-hover:scale-110 transition-transform duration-700">
+                        <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13.5h-13L12 6.5z"/></svg>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-xs font-black text-brand-600 uppercase tracking-widest mb-3">My Philosophy</h3>
+                        <h2 class="text-3xl md:text-4xl font-serif font-black text-slate-900 mb-6 leading-tight">I don't just write articles. <br/>I design <span class="underline decoration-brand-400 decoration-4 underline-offset-4">reading experiences.</span></h2>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-6">Good writing fills a page. Great writing moves the reader from curiosity to action. Before I type a single word, I map out the user's journey, search intent, and the exact psychological triggers needed to keep them hooked.</p>
+                        <div class="flex items-center text-brand-600 font-bold group-hover:text-brand-700 transition-colors">
+                            <span class="mr-2">Explore my process</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Steps Box -->
+                <div class="reveal glass-card rounded-3xl p-8 bg-slate-900 text-white hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 border-none relative">
+                    <h3 class="text-2xl font-serif font-bold mb-8">The Process</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold mr-4 shrink-0">1</div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Deep Research</h4>
+                                <p class="text-sm text-slate-400">Understanding your niche, competitors, and audience pain points.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold mr-4 shrink-0">2</div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Strategic Drafting</h4>
+                                <p class="text-sm text-slate-400">Writing conversion-focused copy with clear, persuasive structures.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold mr-4 shrink-0">3</div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">SEO Optimization</h4>
+                                <p class="text-sm text-slate-400">Integrating keywords naturally to win search engine algorithms.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Featured Articles Grid -->
+            <div class="mb-10 reveal">
+                <div class="flex justify-between items-end mb-10 border-b border-slate-200 pb-4">
+                    <div>
+                        <h2 class="text-4xl font-serif font-bold text-slate-900">Featured Work</h2>
+                        <p class="text-slate-500 mt-2 font-medium">Curated selections that drive engagement.</p>
+                    </div>
+                    <button onclick="navigate('articles')" class="hidden sm:flex items-center text-brand-600 hover:text-brand-800 font-bold transition-colors group">
+                        Explore Portfolio <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </button>
                 </div>
                 
@@ -160,8 +316,8 @@
                     <!-- Featured Articles injected via JS -->
                 </div>
                 
-                <div class="mt-8 text-center sm:hidden">
-                    <button onclick="navigate('articles')" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 shadow-sm text-base font-medium rounded-md text-slate-700 bg-white hover:bg-slate-50 w-full transition-colors">
+                <div class="mt-12 text-center sm:hidden">
+                    <button onclick="navigate('articles')" class="inline-flex items-center justify-center px-8 py-4 shadow-lg text-base font-bold rounded-full text-white bg-slate-900 hover:bg-brand-600 w-full transition-colors">
                         View All Articles
                     </button>
                 </div>
@@ -169,99 +325,173 @@
         </section>
 
         <!-- ================= ABOUT SECTION ================= -->
-        <section id="section-about" class="hidden animate-fade-in py-10">
-            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 p-8 md:p-12">
-                <h2 class="text-4xl font-serif font-bold text-slate-900 mb-6">About Me</h2>
-                <div class="prose prose-lg text-slate-600">
-                    <p class="mb-4">Hello! I'm <strong>Noman Haider</strong>, a professional content writer dedicated to crafting words that not only read beautifully but drive real business results. The 2026 landscape demands content that is sharp, thoroughly researched, and perfectly aligned with search intent and user psychology.</p>
-                    <p class="mb-4">I specialize across four distinct pillars:</p>
-                    <ul class="list-disc pl-6 mb-6 space-y-2">
-                        <li><strong>E-Commerce & Product Writing:</strong> Creating buying guides and comparisons that convert browsers into buyers.</li>
-                        <li><strong>Long-Form Blogs:</strong> Thought leadership and lifestyle content that keeps readers engaged from the first sentence to the last.</li>
-                        <li><strong>SEO Content:</strong> Strategically structured articles designed to win the algorithm without sacrificing human readability.</li>
-                        <li><strong>Social Media:</strong> High-impact short-form copy for Instagram, LinkedIn, and X that stops the scroll and starts conversations.</li>
-                    </ul>
-                    <p>My approach is simple: understand the audience's exact pain point, and answer it clearer and better than anyone else on the internet. Every piece in this portfolio is an example of that philosophy in action.</p>
+        <section id="section-about" class="hidden py-10">
+            <div class="max-w-4xl mx-auto relative animate-slide-up">
+                <div class="absolute -top-10 -left-10 w-32 h-32 bg-brand-200 rounded-full mix-blend-multiply filter blur-2xl opacity-50"></div>
+                <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-50"></div>
+                
+                <div class="glass-card rounded-3xl shadow-xl p-8 md:p-16 relative z-10 border border-white">
+                    <h2 class="text-5xl font-serif font-black text-slate-900 mb-8 inline-block relative">
+                        Behind the Words
+                        <span class="absolute bottom-2 left-0 w-full h-3 bg-brand-200 -z-10 transform -skew-x-12"></span>
+                    </h2>
+                    
+                    <div class="prose prose-lg text-slate-600 max-w-none">
+                        <p class="text-xl leading-relaxed text-slate-800 font-medium mb-8">Hello! I'm <span class="text-brand-600 font-bold">Noman Haider</span>, a professional content writer dedicated to crafting words that not only read beautifully but drive real business results. The 2026 landscape demands content that is sharp, thoroughly researched, and perfectly aligned with search intent and user psychology.</p>
+                        
+                        <h3 class="text-2xl font-bold font-serif text-slate-900 mt-10 mb-6">My Four Pillars of Expertise:</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                            <div class="bg-white/50 rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-2">E-Commerce Content</h4>
+                                <p class="text-sm">Creating buying guides and comparisons that convert browsers into buyers smoothly.</p>
+                            </div>
+                            <div class="bg-white/50 rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-4">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-2">Long-Form Blogs</h4>
+                                <p class="text-sm">Thought leadership that keeps readers deeply engaged from the first sentence to the last.</p>
+                            </div>
+                            <div class="bg-white/50 rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-2">SEO Strategy</h4>
+                                <p class="text-sm">Structured articles designed to win search algorithms without sacrificing human readability.</p>
+                            </div>
+                            <div class="bg-white/50 rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-10 h-10 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center mb-4">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-2">Social Media</h4>
+                                <p class="text-sm">High-impact short-form copy that stops the scroll and initiates meaningful conversations.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-slate-900 text-white p-8 rounded-2xl italic font-serif text-xl text-center shadow-lg relative overflow-hidden">
+                            <div class="absolute -top-4 -left-4 text-slate-700 opacity-30 text-8xl">"</div>
+                            <p class="relative z-10">My approach is simple: understand the audience's exact pain point, and answer it clearer and better than anyone else on the internet.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ================= CONTACT SECTION ================= -->
-        <section id="section-contact" class="hidden animate-fade-in py-10">
-            <div class="max-w-2xl mx-auto text-center mb-10">
-                <h2 class="text-4xl font-serif font-bold text-slate-900 mb-4">Let's Work Together</h2>
-                <p class="text-lg text-slate-600">Have a project in mind? I'm currently available for freelance opportunities and long-term content partnerships.</p>
+        <section id="section-contact" class="hidden py-10">
+            <div class="max-w-2xl mx-auto text-center mb-16 animate-slide-up">
+                <h2 class="text-5xl font-serif font-black text-slate-900 mb-6">Let's Collaborate</h2>
+                <p class="text-xl text-slate-600 font-light">Ready to turn readers into revenue? Send me a message and let's build your content strategy together.</p>
             </div>
             
-            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="bg-brand-600 p-10 text-white flex flex-col justify-center">
-                        <h3 class="text-2xl font-serif font-bold mb-6">Contact Information</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <svg class="w-6 h-6 mr-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                <span>hello@nomanhaider.com</span>
+            <div class="max-w-4xl mx-auto glass-card rounded-3xl shadow-2xl overflow-hidden border border-white flex flex-col md:flex-row animate-slide-up" style="animation-delay: 0.1s;">
+                <!-- Info Side -->
+                <div class="bg-gradient-to-br from-slate-900 to-brand-900 p-12 text-white md:w-2/5 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute bottom-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-2xl transform translate-x-1/2 translate-y-1/2"></div>
+                    <div>
+                        <h3 class="text-3xl font-serif font-bold mb-2">Get in Touch</h3>
+                        <p class="text-brand-200 mb-10">I typically reply within 24 hours.</p>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-center group cursor-pointer">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-brand-500 transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <span class="font-medium group-hover:text-brand-200 transition-colors">hello@nomanhaider.com</span>
                             </div>
-                            <div class="flex items-start">
-                                <svg class="w-6 h-6 mr-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <span>Available Worldwide (Remote)</span>
+                            <div class="flex items-center group cursor-pointer">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-brand-500 transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                </div>
+                                <span class="font-medium group-hover:text-brand-200 transition-colors">Available Worldwide (Remote)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="p-10">
-                        <form onsubmit="event.preventDefault(); alert('Message feature is a UI demo for portfolio.');" class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
-                                <input type="text" class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-brand-500 focus:border-brand-500 outline-none transition-shadow" placeholder="John Doe">
+                </div>
+                
+                <!-- Form Side -->
+                <div class="p-12 md:w-3/5 bg-white/60">
+                    <form onsubmit="event.preventDefault(); alert('Message feature is a UI demo for portfolio.');" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-slate-700 tracking-wide uppercase">First Name</label>
+                                <input type="text" class="w-full px-5 py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all shadow-sm" placeholder="John">
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                                <input type="email" class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-brand-500 focus:border-brand-500 outline-none transition-shadow" placeholder="john@example.com">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-slate-700 tracking-wide uppercase">Last Name</label>
+                                <input type="text" class="w-full px-5 py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all shadow-sm" placeholder="Doe">
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                                <textarea rows="4" class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-brand-500 focus:border-brand-500 outline-none transition-shadow" placeholder="Tell me about your project..."></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-slate-900 text-white py-3 rounded-md font-medium hover:bg-slate-800 transition-colors shadow-sm">Send Message</button>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 tracking-wide uppercase">Email Address</label>
+                            <input type="email" class="w-full px-5 py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all shadow-sm" placeholder="john@company.com">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 tracking-wide uppercase">Project Details</label>
+                            <textarea rows="4" class="w-full px-5 py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all shadow-sm resize-none" placeholder="Tell me about your brand and what you need..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold text-lg hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/30 hover:-translate-y-1 transition-all duration-300">Send Proposal</button>
+                    </form>
                 </div>
             </div>
         </section>
 
         <!-- ================= ARTICLES LIST SECTION ================= -->
-        <section id="section-articles" class="hidden animate-fade-in py-10">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-serif font-bold text-slate-900 mb-4">Complete Portfolio</h2>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto">Browse through 12 data-driven, conversion-focused articles across 4 categories.</p>
+        <section id="section-articles" class="hidden py-10">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-5xl font-serif font-black text-slate-900 mb-6">Complete Portfolio Archive</h2>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto font-light">Explore 12 comprehensive articles meticulously crafted to educate, engage, and convert.</p>
             </div>
             
-            <div id="category-articles-container" class="space-y-16">
+            <div id="category-articles-container" class="space-y-20 animate-slide-up" style="animation-delay: 0.1s;">
                 <!-- Categories populated by JS -->
             </div>
         </section>
 
         <!-- ================= SINGLE ARTICLE VIEW ================= -->
-        <section id="section-single-article" class="hidden animate-fade-in py-6">
-            <button onclick="navigate('articles')" class="inline-flex items-center text-brand-600 hover:text-brand-800 font-medium mb-8 group transition-colors">
+        <section id="section-single-article" class="hidden py-4">
+            <button onclick="navigate('articles')" class="inline-flex items-center px-6 py-3 bg-white border border-slate-200 rounded-full text-slate-700 hover:text-brand-600 hover:border-brand-300 hover:shadow-md font-bold mb-10 group transition-all duration-300 animate-fade-in">
                 <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Back to Articles
+                Back to Archives
             </button>
             
-            <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden max-w-4xl mx-auto">
-                <img id="single-article-image" src="" alt="Cover" class="w-full h-64 md:h-96 object-cover">
-                <div class="p-6 md:p-12">
-                    <div class="flex flex-wrap items-center text-sm text-slate-500 mb-6 gap-y-3 gap-x-4">
-                        <span id="single-article-category" class="bg-brand-50 text-brand-700 px-3 py-1 rounded-full font-medium"></span>
-                        <span id="single-article-type" class="flex items-center font-medium bg-slate-100 px-3 py-1 rounded-full"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg> <span id="span-type"></span></span>
-                        <span id="single-article-meta1" class="flex items-center font-medium bg-slate-100 px-3 py-1 rounded-full text-slate-700"></span>
-                        <span id="single-article-meta2" class="flex items-center font-medium bg-slate-100 px-3 py-1 rounded-full text-slate-700"></span>
+            <!-- Removed 'reveal' class to prevent intersection observer conflicts, using clean CSS animation instead -->
+            <article class="glass-card rounded-3xl shadow-2xl border border-white/50 overflow-hidden max-w-4xl mx-auto animate-slide-up" id="article-read-container">
+                <!-- Premium Hero Image Setup -->
+                <div class="relative w-full h-80 md:h-[450px] overflow-hidden group">
+                    <img id="single-article-image" src="" alt="Cover" class="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+                    
+                    <!-- Meta Tags overlaid on image bottom -->
+                    <div class="absolute bottom-0 left-0 w-full p-8 md:p-12 flex flex-wrap items-center gap-3">
+                        <span id="single-article-category" class="bg-brand-500 text-white px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-lg"></span>
+                        <span id="single-article-type" class="flex items-center text-xs font-bold text-slate-900 bg-white px-4 py-1.5 rounded-full shadow-lg"><svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg> <span id="span-type"></span></span>
+                    </div>
+                </div>
+
+                <div class="p-8 md:p-16 bg-white relative">
+                    <!-- Additional Meta -->
+                    <div class="flex flex-wrap text-sm text-slate-500 mb-8 gap-4 border-b border-slate-100 pb-6">
+                        <span id="single-article-meta1" class="flex items-center font-semibold text-slate-600 bg-slate-50 px-3 py-1 rounded-md border border-slate-100"></span>
+                        <span id="single-article-meta2" class="flex items-center font-semibold text-slate-600 bg-slate-50 px-3 py-1 rounded-md border border-slate-100"></span>
                     </div>
                     
-                    <h1 id="single-article-title" class="text-3xl md:text-5xl font-serif font-bold text-slate-900 mb-8 leading-tight"></h1>
+                    <h1 id="single-article-title" class="text-4xl md:text-6xl font-serif font-black text-slate-900 mb-10 leading-[1.1] tracking-tight"></h1>
                     
-                    <div id="single-article-content" class="article-content prose-lg text-slate-700 max-w-none">
+                    <div id="single-article-content" class="article-content prose-lg md:prose-xl text-slate-700 max-w-none">
                         <!-- Content injected via JS -->
+                    </div>
+                    
+                    <!-- Article End Separator -->
+                    <div class="mt-16 pt-8 border-t border-slate-200 flex justify-center">
+                        <div class="flex space-x-2">
+                            <span class="w-2 h-2 bg-brand-300 rounded-full"></span>
+                            <span class="w-2 h-2 bg-brand-500 rounded-full"></span>
+                            <span class="w-2 h-2 bg-brand-300 rounded-full"></span>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -270,58 +500,111 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-300 py-12 mt-auto">
+    <footer class="bg-slate-950 text-slate-300 py-16 border-t border-slate-900 mt-auto">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0 text-center md:text-left">
-                <h2 class="font-serif text-2xl font-bold text-white mb-2">Noman Haider</h2>
-                <p class="text-sm text-slate-400">Professional Content Writer. Portfolio 2026.</p>
+            <div class="mb-8 md:mb-0 text-center md:text-left">
+                <h2 class="font-serif text-3xl font-black text-white mb-2 tracking-tight">Noman Haider<span class="text-brand-500">.</span></h2>
+                <p class="text-sm text-slate-400 font-medium tracking-wide uppercase">Premium Content Writer &copy; 2026</p>
             </div>
             
-            <!-- 3 Links: Instagram, Facebook, Twitter -->
             <div class="flex space-x-6">
-                <a href="#" class="text-slate-400 hover:text-white transition-colors group">
+                <!-- Elegant Hover Icons -->
+                <a href="#" class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-600 hover:-translate-y-2 hover:shadow-lg hover:shadow-brand-500/20 transition-all duration-300 group">
                     <span class="sr-only">Instagram</span>
-                    <svg class="h-7 w-7 transform group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
-                    </svg>
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
                 </a>
-                <a href="#" class="text-slate-400 hover:text-white transition-colors group">
+                <a href="#" class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 hover:-translate-y-2 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 group">
                     <span class="sr-only">Facebook</span>
-                    <svg class="h-7 w-7 transform group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
-                    </svg>
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
                 </a>
-                <a href="#" class="text-slate-400 hover:text-white transition-colors group">
+                <a href="#" class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-sky-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-sky-500/20 transition-all duration-300 group">
                     <span class="sr-only">Twitter</span>
-                    <svg class="h-7 w-7 transform group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                    </svg>
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
                 </a>
             </div>
-        </div>
-        <div class="text-center mt-8 text-slate-500 text-sm">
-            &copy; 2026 Noman Haider. All rights reserved.
         </div>
     </footer>
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- ================= JAVASCRIPT & ANIMATION LOGIC ================= -->
     <script>
+        // Reading Progress Bar Logic
+        window.addEventListener('scroll', () => {
+            const articleSection = document.getElementById('section-single-article');
+            const progressBar = document.getElementById('progress-container');
+            const bar = document.getElementById('progress-bar');
+            
+            if(!articleSection.classList.contains('hidden')) {
+                progressBar.classList.remove('hidden');
+                
+                // Calculate scroll percentage
+                const scrollTotal = document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = scrollTotal / height;
+                
+                bar.style.transform = `scaleX(${scrolled})`;
+            } else {
+                progressBar.classList.add('hidden');
+            }
+        });
+
+        // Global Intersection Observer for scroll animations (Initialized ONCE)
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Reveal only once
+                }
+            });
+        }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+        function initRevealAnimations() {
+            const revealElements = document.querySelectorAll('.reveal:not(.active)');
+            revealElements.forEach(el => revealObserver.observe(el));
+        }
+
+        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    menu.style.opacity = '1';
+                    menu.style.transform = 'scaleY(1)';
+                }, 10);
+            } else {
+                menu.style.opacity = '0';
+                menu.style.transform = 'scaleY(0.95)';
+                setTimeout(() => menu.classList.add('hidden'), 300);
+            }
         }
         document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
 
+        // Smooth SPA Navigation (Fixed Animation Conflicts)
         function navigate(sectionId) {
             const sections = ['section-home', 'section-about', 'section-contact', 'section-articles', 'section-single-article'];
+            
+            // Hide all sections
             sections.forEach(id => {
-                document.getElementById(id).classList.add('hidden');
+                const el = document.getElementById(id);
+                el.classList.add('hidden');
             });
-            document.getElementById(`section-${sectionId}`).classList.remove('hidden');
-            window.scrollTo(0, 0); 
+            
+            // Show new section and trigger standard CSS animation
+            const newSection = document.getElementById(`section-${sectionId}`);
+            newSection.classList.remove('hidden');
+            
+            // Reset CSS animation
+            newSection.style.animation = 'none';
+            newSection.offsetHeight; // trigger reflow
+            newSection.style.animation = null; 
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+            
+            // Allow DOM to settle before observing
+            setTimeout(initRevealAnimations, 50);
         }
 
-        // ================= EXACT 12 ARTICLES EXTRACTED FROM FILE =================
+        // ================= EXACT 12 UNIQUE ARTICLES =================
         const rawArticlesData = [
             {
                 id: 1,
@@ -1025,14 +1308,14 @@ The narrative arc - problem, insight, data, tactic, mistake, lesson, CTA - follo
             let html = '';
             let inList = false;
             
-            lines.forEach(line => {
+            lines.forEach((line, index) => {
                 const trimmed = line.trim();
                 if (!trimmed) return;
                 
                 const isListItem = trimmed.startsWith('•') || trimmed.startsWith('-');
                 
                 if (isListItem && !inList) {
-                    html += '<ul class="mb-6 space-y-2">';
+                    html += '<ul class="mb-8 space-y-3 p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-inner">';
                     inList = true;
                 } else if (!isListItem && inList) {
                     html += '</ul>';
@@ -1040,17 +1323,17 @@ The narrative arc - problem, insight, data, tactic, mistake, lesson, CTA - follo
                 }
                 
                 if (isListItem) {
-                    html += `<li class="ml-6 list-disc text-slate-700">${trimmed.substring(1).trim()}</li>`;
+                    html += `<li class="ml-6 list-disc text-slate-700 pl-2 leading-relaxed">${trimmed.substring(1).trim()}</li>`;
                 } else if (trimmed.startsWith('Q:')) {
-                    html += `<h4 class="font-bold text-lg text-slate-800 mt-8 mb-2">${trimmed}</h4>`;
+                    html += `<h4 class="font-bold text-xl text-slate-900 mt-10 mb-3 flex items-start"><span class="text-brand-500 mr-2 text-2xl leading-none">Q.</span>${trimmed.substring(2).trim()}</h4>`;
                 } else if (trimmed.startsWith('Strategy Note:')) {
-                    html += `<div class="bg-brand-50 border-l-4 border-brand-500 p-5 my-6 rounded-r-lg shadow-sm"><p class="text-sm italic text-brand-900 m-0 leading-relaxed">${trimmed}</p></div>`;
+                    html += `<div class="bg-gradient-to-r from-brand-50 to-white border-l-4 border-brand-500 p-6 my-8 rounded-r-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex items-start"><div class="text-brand-500 mr-4 mt-1"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><p class="text-sm md:text-base italic text-slate-700 m-0 leading-relaxed font-medium">${trimmed}</p></div>`;
                 } else if (trimmed.match(/^(Caption \d+|Post \d+|Tweet \d+|The Thread)/)) {
-                    html += `<h4 class="font-bold text-xl text-brand-600 border-b border-slate-100 pb-2 mt-10 mb-4">${trimmed}</h4>`;
+                    html += `<h4 class="font-bold text-2xl font-serif text-brand-600 border-b-2 border-brand-100 pb-3 mt-12 mb-6 inline-block">${trimmed}</h4>`;
                 } else if (trimmed.length < 90 && !trimmed.endsWith('.') && !trimmed.endsWith('?') && !trimmed.endsWith('"')) {
-                    html += `<h3 class="font-serif font-bold text-2xl text-slate-900 mt-10 mb-4 leading-tight">${trimmed}</h3>`;
+                    html += `<h3 class="font-serif font-bold text-3xl text-slate-900 mt-12 mb-5 leading-snug tracking-tight">${trimmed}</h3>`;
                 } else {
-                    html += `<p class="text-slate-700 leading-relaxed mb-5">${trimmed}</p>`;
+                    html += `<p class="text-slate-700 leading-[1.8] mb-6 text-lg">${trimmed}</p>`;
                 }
             });
             
@@ -1066,16 +1349,22 @@ The narrative arc - problem, insight, data, tactic, mistake, lesson, CTA - follo
             let html = '';
             featured.forEach(article => {
                 html += `
-                <div onclick="openArticle(${article.id})" class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col h-full">
-                    <div class="relative overflow-hidden aspect-video">
-                        <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-xs font-bold text-slate-800 px-2 py-1 rounded shadow-sm">${article.category.split(' &')[0]}</div>
+                <div onclick="openArticle(${article.id})" class="glass-card rounded-3xl shadow-sm border border-slate-200/60 overflow-hidden hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer group flex flex-col h-full">
+                    <div class="relative overflow-hidden aspect-[16/10]">
+                        <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                        <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 z-20">
+                            <span class="bg-white/90 backdrop-blur-md text-xs font-bold text-slate-800 px-3 py-1.5 rounded-full shadow-sm uppercase tracking-wide">${article.category.split(' &')[0]}</span>
+                        </div>
                     </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="font-serif font-bold text-xl text-slate-900 mb-3 group-hover:text-brand-600 transition-colors line-clamp-2">${article.title}</h3>
-                        <p class="text-slate-600 text-sm mb-4 line-clamp-3">${article.snippet}</p>
-                        <div class="mt-auto text-brand-600 font-medium text-sm flex items-center">
-                            Read Article <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <div class="p-8 flex flex-col flex-grow bg-white/50">
+                        <h3 class="font-serif font-bold text-2xl text-slate-900 mb-4 group-hover:text-brand-600 transition-colors leading-snug line-clamp-2">${article.title}</h3>
+                        <p class="text-slate-600 mb-6 line-clamp-3 leading-relaxed">${article.snippet}</p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">${article.type}</span>
+                            <span class="text-brand-600 font-bold text-sm flex items-center group-hover:text-brand-700">
+                                Read <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -1096,22 +1385,27 @@ The narrative arc - problem, insight, data, tactic, mistake, lesson, CTA - follo
             let html = '';
             Object.keys(groupedArticles).forEach(category => {
                 html += `
-                <div class="mb-12">
-                    <h3 class="text-2xl font-serif font-bold text-slate-900 mb-6 pb-2 border-b border-slate-200 flex items-center">
-                        <span class="bg-brand-500 w-2 h-8 mr-3 rounded-full"></span>
-                        ${category}
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="mb-16 reveal">
+                    <div class="flex items-center mb-8">
+                        <span class="w-12 h-1 bg-brand-500 rounded-full mr-4"></span>
+                        <h3 class="text-3xl font-serif font-black text-slate-900 tracking-tight">${category}</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 `;
                 
                 groupedArticles[category].forEach(article => {
                     html += `
-                    <div onclick="openArticle(${article.id})" class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col">
-                        <img src="${article.image}" alt="${article.title}" class="w-full h-40 object-cover">
-                        <div class="p-5 flex flex-col flex-grow">
-                            <span class="text-xs font-bold text-brand-600 mb-2 uppercase tracking-wider">${article.type}</span>
-                            <h4 class="font-bold text-lg text-slate-900 mb-2 line-clamp-2 hover:text-brand-600">${article.title}</h4>
-                            <p class="text-slate-500 text-sm line-clamp-2">${article.snippet}</p>
+                    <div onclick="openArticle(${article.id})" class="glass-card rounded-2xl shadow-sm border border-slate-200/60 overflow-hidden hover:shadow-xl hover:border-brand-300 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col group bg-white/40">
+                        <div class="h-48 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors z-10"></div>
+                            <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-[10px] font-black text-brand-600 bg-brand-50 px-2 py-1 rounded uppercase tracking-widest">${article.type}</span>
+                            </div>
+                            <h4 class="font-serif font-bold text-xl text-slate-900 mb-3 line-clamp-2 group-hover:text-brand-600 transition-colors leading-snug">${article.title}</h4>
+                            <p class="text-slate-500 text-sm line-clamp-2 leading-relaxed">${article.snippet}</p>
                         </div>
                     </div>
                     `;
@@ -1128,25 +1422,29 @@ The narrative arc - problem, insight, data, tactic, mistake, lesson, CTA - follo
 
         function openArticle(id) {
             const article = rawArticlesData.find(a => a.id === id);
-            if(!article) return;
+            if(!article) {
+                console.error("Article not found for ID:", id);
+                return;
+            }
 
             document.getElementById('single-article-image').src = article.image;
             document.getElementById('single-article-category').textContent = article.category;
             document.getElementById('span-type').textContent = article.type;
             
-            document.getElementById('single-article-meta1').textContent = article.meta1;
-            document.getElementById('single-article-meta2').textContent = article.meta2;
+            document.getElementById('single-article-meta1').innerHTML = `<svg class="w-4 h-4 mr-1.5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path></svg>${article.meta1.replace('Keyword: ', '').replace('Platform: ', '')}`;
+            document.getElementById('single-article-meta2').innerHTML = `<svg class="w-4 h-4 mr-1.5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>${article.meta2.replace('Word Count: ', '').replace('Niche: ', '')}`;
             
             document.getElementById('single-article-title').textContent = article.title;
-            
             document.getElementById('single-article-content').innerHTML = formatArticleText(article.content);
 
             navigate('single-article');
         }
 
+        // Initialize App
         window.onload = () => {
             renderFeaturedArticles();
             renderArticleList();
+            setTimeout(initRevealAnimations, 150);
         };
     </script>
 </body>
